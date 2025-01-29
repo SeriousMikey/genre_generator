@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, Button, Switch, ScrollView } from 'react-native'
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
-export default function NewScreen({ navigation }) {
-  
-  // Array
-  const [toggles, setToggles] = useState([])
 
+export default function Toggles({ navigation }) {
+  
   // Dimensions Toggles
   const [is2DEnabled, setis2DEnabled] = useState(true)
   const [is2point5DEnabled, setis2point5Enabled] = useState(true)
@@ -34,12 +32,14 @@ export default function NewScreen({ navigation }) {
   const [isBattleRoyaleEnabled, setisBattleRoyaleEnabled] = useState(true)
 
   return (
+    // All the switch mechanisms
       <SafeAreaProvider>
         <ScrollView>
           <SafeAreaView>
             <Text>DIMENSIONS</Text>
             <SafeAreaView style={styles.switchContainer}>
-              <Switch value={is2DEnabled} onValueChange={() => setis2DEnabled((previousState) => !previousState)}/>
+              <Switch 
+              value={is2DEnabled} onValueChange={() => setis2DEnabled((previousState) => !previousState)}/>
               <Text>2D</Text>
             </SafeAreaView>
             <SafeAreaView style={styles.switchContainer}>
@@ -132,13 +132,109 @@ export default function NewScreen({ navigation }) {
             </SafeAreaView>
           </SafeAreaView>
         </ScrollView>
-
+        <SafeAreaView>
+          <Button
+              title="Generate"
+              style={styles.togglesButton}
+              onPress={() => {
+                let options = getToggles
+                ([is2DEnabled, is2point5DEnabled, is3DEnabled, isVREnabled, 
+                  isAdventureEnabled, isActionEnabled, isSportsEnabled, isSimulationEnabled,
+                  isPlatformerEnabled, isRPGEnabled, isFightingEnabled, isRTSEnabled, 
+                  isRacingEnabled, isShooterEnabled, isPuzzleEnabled, isCasualEnabled,
+                  isStrategyEnabled, isMMORPGEnabled, isStealthEnabled, isPartyEnabled,
+                  isSurvivalEnabled, isBattleRoyaleEnabled])
+                navigation.navigate("Generator", {genresString: getRandomGenres(options)})
+              }}/>
+        </SafeAreaView>
       </SafeAreaProvider>
   )
 }
 
-function getToggles() {
+export function getToggles(array) {
+  // Instance the arrays
+  let dimensionsOptions = []
+  let genresOptions = []
 
+  // Add all the toggled genres and dimensions to their respective arrays
+
+  if (array[0]) {
+    dimensionsOptions.push("2D")
+  }
+  if (array[1]) {
+    dimensionsOptions.push("2.5D")
+  }
+  if (array[2]) {
+    dimensionsOptions.push("3D")
+  }
+  if (array[3]) {
+    dimensionsOptions.push("VR")
+  }
+  if (array[4]) {
+    genresOptions.push("Adventure")
+  }
+  if (array[5]) {
+    genresOptions.push("Action")
+  }
+  if (array[6]) {
+    genresOptions.push("Sports")
+  }
+  if (array[7]) {
+    genresOptions.push("Simulation")
+  }
+  if (array[8]) {
+    genresOptions.push("Platformer")
+  }
+  if (array[9]) {
+    genresOptions.push("RPG")
+  }
+  if (array[10]) {
+    genresOptions.push("Fighting")
+  }
+  if (array[11]) {
+    genresOptions.push("RTS")
+  }
+  if (array[12]) {
+    genresOptions.push("Racing")
+  }
+  if (array[13]) {
+    genresOptions.push("Shooter")
+  }
+  if (array[14]) {
+    genresOptions.push("Puzzle")
+  }
+  if (array[15]) {
+    genresOptions.push("Casual")
+  }
+  if (array[16]) {
+    genresOptions.push("Strategy")
+  }
+  if (array[17]) {
+    genresOptions.push("MMORPG")
+  }
+  if (array[18]) {
+    genresOptions.push("Stealth")
+  }
+  if (array[19]) {
+    genresOptions.push("Party")
+  }
+  if (array[20]) {
+    genresOptions.push("Survival")
+  }
+  if (array[21]) {
+    genresOptions.push("Battle Royale")
+  }
+  
+  return [dimensionsOptions, genresOptions]
+
+}
+
+function randomNumberInRange(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getRandomGenres(options) {
+  return `${options[0][randomNumberInRange(0, options[0].length)]} ${options[1][randomNumberInRange(0, options[1].length)]} ${options[1][randomNumberInRange(0, options[1].length)]}`
 }
 
 const styles = StyleSheet.create({
@@ -152,5 +248,11 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 30,
       padding: 10
-    }
+    },
+  
+    togglesButton: {
+        alignItems: "center",
+        justifyContent: "center",
+        color: "white",
+      },
   });

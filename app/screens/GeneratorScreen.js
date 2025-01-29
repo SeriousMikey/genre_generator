@@ -1,45 +1,28 @@
-import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { useRoute } from '@react-navigation/native';
 
-export default function HomeScreen({ navigation }) {
+
+export default function GenreGenerator({ navigation }) {
+  const route = useRoute();
+  const { genresString } = route.params;
+
   return (
-    <SafeAreaProvider style={{backgroundColor: "black"}}>
+    <SafeAreaProvider style={{backgroundColor: "white"}}>
       <SafeAreaView style={styles.general}>
-      
+        <Text style={{fontSize: 40}}>{genresString}</Text>
       </SafeAreaView>
-      <SafeAreaView style={styles.togglesButtonHolder}>
-        <Text
-          style={styles.togglesButton}
-          onPress={() => navigation.navigate("Toggles")}>Toggles</Text>
-    </SafeAreaView>
     </SafeAreaProvider>
-    
   )
 }
 
 const styles = StyleSheet.create({
     
   general: {
-    flex: 1
-  },
-  
-  togglesButtonHolder: {
-    backgroundColor: "black",
-    alignItems: "center",
+    flex: 1,
     justifyContent: "center",
-    borderWidth: 2,
-    borderColor: "white",
-    height: "7%",
-    width: "70%",
-    alignSelf: "center",
-    borderRadius: 20
+    alignItems: "center"
   },
-
-  togglesButton: {
-      alignItems: "center",
-      justifyContent: "center",
-      color: "white",
-    },
 
   });
