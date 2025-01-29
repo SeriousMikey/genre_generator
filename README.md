@@ -1,30 +1,25 @@
 # Overview
+This app generates random genres and dimensions. Some examples are "2D Action Adventure" and "3D RPG Party". You can toggle the genres you want to exclude so they won't appear on generation.
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+I wanted a way to get random genres easily, so I decided to make it for myself.
 
-{Provide a description of your app.  Describe how to use the app.}
-
-{Describe your purpose for creating this app.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the app running and a walkthrough of the code.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/M5GzuGbmeM8)
 
 # Development Environment
 
-{Describe the tools that you used to develop the app}
+I used VSCode and Android Studio to develop the app.
 
-{Describe the programming language that you used and any libraries.}
+I used React Native as the programming language, and Expo and Node.js as the libraries.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Stack Overflow](https://stackoverflow.com/)
+* [React Native Dev](https://reactnative.dev/)
+* [YouTube](https://www.youtube.com/watch?v=0-S5a0eXPoc)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Let the user select how many genres they can have in a generation
+* Let the user select how many generations to perform at one time
+* Add more genres
+* Make the app look better
